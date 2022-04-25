@@ -1,0 +1,26 @@
+html, body{
+    height: 100%;
+    margin: 0;
+}
+
+.lg-fs{
+    font-family: 'Paytone One', sans-serif;
+    font-size: 120px;
+}
+
+.md-fs{
+    font-family: 'Paytone One', sans-serif;
+    font-size: 60px;
+}
+
+input[type=number] {
+    width: 25%;
+    font-size: 120px;
+    border: none;
+    border-bottom: 1px solid #000;
+    font-family: 'Paytone One', sans-serif;
+}
+
+.full-width{
+    width: 100%;
+}

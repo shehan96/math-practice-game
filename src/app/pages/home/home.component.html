@@ -1,0 +1,55 @@
+<div class="main-bg d-flex justify-content-center align-items-center">
+    <div class="question-bg shadow d-flex justify-content-evenly align-items-center flex-column">
+        <div class="d-flex justify-content-evenly align-items-center flex-column">
+            <h1>Math Practice Game</h1>
+            <p>Developed by : Shehan Abeyrathne <span style="color: #7b7b7b;">for Kinnet Assignment</span></p>
+            <p style="color: #7b7b7b; font-size: 12px;">*note : Type your answer and press ENTER.</p>
+        </div>
+        <div class="d-flex justify-content-evenly align-items-center">
+            <div class="lg-fs">
+                {{number_one}}
+            </div>
+            <div class="md-fs">
+                +
+            </div>
+            <div class="lg-fs">
+                {{number_two}}
+            </div>
+            <div class="md-fs">
+                =
+            </div>
+            <input #userInput #answer="ngModel" name="answer" [(ngModel)]="user_input.answer" type="number"
+                (keydown.enter)='cal()' />
+            <div class=""></div>
+        </div>
+        <div class="d-flex justify-content-evenly align-items-center full-width">
+            <p>Time : {{ellapsedTime}}</p>
+            <p>Avarage Time : {{showAvarageTime}}</p>
+        </div>
+    </div>
+</div>
+
+<button id="showResponseButton" data-bs-toggle="modal" data-bs-target="#responseModel" [hidden]="true"></button>
+<button id="closeResponseButton" [hidden]="true" data-bs-toggle="modal" data-bs-target="#responseModel"
+    data-bs-dismiss="modal"></button>
+
+<!-- correct or wrong model -->
+<div class="modal fade" id="responseModel" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+    aria-labelledby="informationModelLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-body d-flex justify-content-center align-items-center flex-column" *ngIf="correctAnswer">
+                <h2>Congrats</h2>
+                <p>Your answer is correct</p>
+                <button class="btn btn-success" (click)="continueBtn()">Continue</button>
+            </div>
+            <div class="modal-body  d-flex justify-content-center align-items-center flex-column"
+                *ngIf="!correctAnswer">
+                <h2>Sorry</h2>
+                <p>Your answer is incorrect</p>
+                <button class="btn btn-primary" (click)="tryAgainBtn()">Try Again</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- /correct or wrong model -->
