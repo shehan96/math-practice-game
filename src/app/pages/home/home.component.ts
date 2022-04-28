@@ -1,4 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
+import { interval, Observable } from 'rxjs';
 
 @Component({
   selector: 'app-home',
@@ -17,12 +18,13 @@ export class HomeComponent implements OnInit {
   correctAnswer: boolean = false;
   startTime: Date;
   ellapsedTime = '00:00';
-  timer: any = null;
+  timer: Observable<number>;
   diff: number;
   avarageTime: number;
   totalTime: number = 0;
   questionNumber: number = 1;
   showAvarageTime = '00:00';
+  timerSubscription : any;
 
   constructor() { }
 
@@ -36,6 +38,9 @@ export class HomeComponent implements OnInit {
 
   ngAfterViewInit() {
     this.userInput.nativeElement.focus();
+  }
+
+  ngDestroy(){
   }
 
   // method to generate random number 0-9
@@ -118,13 +123,16 @@ export class HomeComponent implements OnInit {
     this.totalTime = this.totalTime + this.diff;
     this.avarageTime = this.totalTime / this.questionNumber;
     this.showAvarageTime = this.parseTime(this.avarageTime);
-    clearInterval(this.timer);
+    this.timerSubscription.unsubscribe();
   }
 
   // method to start timmer
   startTimer(){
     this.startTime = new Date();
-    this.timer = setInterval(() => { this.tick(); }, 1000);
+    this.timer = interval(1000);
+    this.timerSubscription = this.timer.subscribe((x : any) => {
+      this.tick();
+    });
   }
 
 }
