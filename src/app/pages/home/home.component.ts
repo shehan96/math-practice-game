@@ -41,6 +41,7 @@ export class HomeComponent implements OnInit {
   }
 
   ngDestroy(){
+    this.timerSubscription.unsubscribe();
   }
 
   // method to generate random number 0-9
