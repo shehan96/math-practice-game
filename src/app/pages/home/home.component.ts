@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { interval, Observable } from 'rxjs';
+import { from, interval, Observable } from 'rxjs';
 
 @Component({
   selector: 'app-home',
@@ -25,6 +25,7 @@ export class HomeComponent implements OnInit {
   questionNumber: number = 1;
   showAvarageTime = '00:00';
   timerSubscription : any;
+  listArray : Observable<number> = from([0,1,2,3,4,5,6,7,8,9]);
 
   constructor() { }
 
@@ -34,6 +35,11 @@ export class HomeComponent implements OnInit {
     this.startTime = new Date();
     this.ellapsedTime = '00:00';
     this.startTimer();
+
+    // rxjs
+    this.listArray.subscribe(x => {
+      console.log(x);
+    })
   }
 
   ngAfterViewInit() {
