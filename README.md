@@ -19,3 +19,7 @@ Here is the link for the video demonstration of the assignment project.
 Here I have host the assignment application in Vercel hosting services. Live project can be access through following link.
 
 `Link :` https://math-practice-game.vercel.app/
+
+### Updates
+
+01. Add RxJs Operators
